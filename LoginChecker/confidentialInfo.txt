@@ -1,0 +1,15 @@
+2
+ambert
+CodingA3!
+testuser
+Password123!
+
+
+// A - What happens if the file you sent does not exist?
+	the program sends an Error: File not found" message 
+	
+	B- what happens if it exist but is empty? 
+	If you try to enter you pasword you get an erroe username or password incorrect try again. 
+	
+	C- What happens if the number of login/password combination specified in the first line of the file is more or less than the actual number of combinations in the file? 
+	It will not check all the combination in the file or will throw a NoSuchElementException 
