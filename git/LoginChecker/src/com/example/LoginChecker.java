@@ -94,6 +94,40 @@ public class LoginChecker {
             System.out.println("Error: Unable to write to file.");
         }
     }
+    public void registerAccount(String username, String password) {
+        try {
+            FileWriter writer = new FileWriter("confidentialInfo.txt", true); // Append mode
+            writer.write(username + "\n");
+            writer.write(password + "\n");
+            writer.close();
+            System.out.println("Account registered successfully!");
+        } catch (IOException e) {
+            System.out.println("Error: Unable to write to file.");
+        }
+    }
+
+    public void displayAllUsers() {
+        try {
+            File file = new File("confidentialInfo.txt");
+            Scanner scanner = new Scanner(file);
+
+            int numAccounts = Integer.parseInt(scanner.nextLine().trim());
+            System.out.println("Total number of accounts: " + numAccounts);
+
+            for (int i = 0; i < numAccounts; i++) {
+                String storedLogin = scanner.nextLine().trim();
+                String storedPassword = scanner.nextLine().trim();
+
+                System.out.println("Username: " + storedLogin + ", Password: " + storedPassword);
+            }
+
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: File not found.");
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid number of accounts in the file.");
+        }
+    }
 
     public static void main(String[] args) {
         LoginChecker loginChecker = new LoginChecker();
